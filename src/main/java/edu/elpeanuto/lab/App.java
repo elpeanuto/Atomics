@@ -28,7 +28,7 @@ public class App {
             List<Long> blockingSolution = new ArrayList<>();
             List<Long> atomicSolution = new ArrayList<>();
 
-            for (int j = 0; j < 100_000; j += 10_000) {
+            for (int j = 10_000; j < 100_000; j += 10_000) {
                 executeAllSolutions(oneThreadTime, blockingSolution, atomicSolution, j);
             }
             oneThreadTimeLists.add(oneThreadTime);

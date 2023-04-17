@@ -46,7 +46,13 @@ public class AtomicSolution extends ParallelSolutionAbstract {
 
         @Override
         public void run() {
-            min.compareAndSet(min.intValue(), minElement(list));
+            int newMin = minElement(list);
+
+            while (newMin < min.get()) {
+                if (min.compareAndSet(min.get(), newMin)) {
+                    break;
+                }
+            }
             sum.getAndAdd(pairedSum(list));
         }
     }
